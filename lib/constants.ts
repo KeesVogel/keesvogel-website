@@ -60,6 +60,8 @@ export const STATS = [
 
 export type Service = { icon: string; title: string; description: string; href?: string; logo?: string }
 
+export type Freebie = { icon: string; title: string; description: string; href: string; logo?: string }
+
 export const SERVICES: Service[] = [
   {
     icon: '🤖',
@@ -140,18 +142,21 @@ export const FREEBIES = [
     title: '8 Business-legendes Team',
     description: 'Leer van 8 succesvolle ondernemers en hun AI-strategieën. Exclusieve Claude skills speciaal voor jouw business.',
     href: 'https://keesvogel.plugandpay.com/gratis-claude-skill-8-business-legendes',
+    logo: '/Business-legends.png',
   },
   {
     icon: '📸',
     title: 'Bol.com Fotograaf Eva',
     description: 'AI-tool die je productfoto\'s automatisch optimaleert voor Bol.com. Hogere zichtbaarheid, meer conversies.',
     href: 'https://keesvogel.plugandpay.com/gratis-marketplace-fotograa-claude-skill',
+    logo: '/Eva.png',
   },
   {
     icon: '💼',
     title: 'LinkedIn Fotograaf',
     description: 'Creëer professionele LinkedIn content met AI. Van profielfoto\'s tot post-templates — alles inbegrepen.',
     href: 'https://keesvogel.plugandpay.com/gratis-linkedin-fotograa-claude-skill-copy',
+    logo: '/linkedin.png',
   },
 ]
 

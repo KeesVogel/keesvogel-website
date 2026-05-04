@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 import { FREEBIES } from '@/lib/constants'
 
 export default function Freebies() {
@@ -55,7 +56,20 @@ function FreebieCard({ freebie }: { freebie: (typeof FREEBIES)[0] }) {
         GRATIS
       </span>
 
-      <span className="text-4xl">{freebie.icon}</span>
+      {/* Logo image */}
+      {freebie.logo ? (
+        <div className="relative w-full h-48 rounded-xl overflow-hidden bg-gray-100">
+          <Image
+            src={freebie.logo}
+            alt={freebie.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
+      ) : (
+        <span className="text-4xl">{freebie.icon}</span>
+      )}
 
       <div className="flex flex-col gap-2 flex-1">
         <h3 className="font-syne font-bold text-[#0d1f3c] text-lg pr-16">{freebie.title}</h3>
