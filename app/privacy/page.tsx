@@ -24,14 +24,14 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-syne font-bold text-[#0d1f3c] text-xl mb-3">1. Wie zijn wij?</h2>
             <p>
-              KeesVogel.ai is een handelsnaam van <strong className="text-[#0d1f3c]">[Jouw bedrijfsnaam]</strong>,
-              ingeschreven bij de Kamer van Koophandel onder nummer <strong className="text-[#0d1f3c]">[KVK-nummer]</strong>.
+              KeesVogel.ai is een handelsnaam van <strong className="text-[#0d1f3c]">KeesVogel.ai</strong>,
+              ingeschreven bij de Kamer van Koophandel onder nummer <strong className="text-[#0d1f3c]">83325298</strong>.
             </p>
             <p className="mt-2">
               <strong className="text-[#0d1f3c]">Contactgegevens:</strong><br />
               E-mail: hallo@keesvogel.nl<br />
               Telefoon: 06 28 73 72 95<br />
-              Adres: [Jouw zakelijk adres]
+              Adres: Beukstraat 1, Breda
             </p>
           </section>
 
@@ -112,13 +112,6 @@ export default function PrivacyPage() {
 
         </div>
 
-        {/* Important notice */}
-        <div className="mt-12 p-5 rounded-2xl"
-          style={{ background: 'rgba(255,180,0,0.06)', border: '1px solid rgba(255,180,0,0.2)' }}>
-          <p className="font-dm text-sm text-[#3d6080]">
-            ⚠️ <strong className="text-[#0d1f3c]">Let op (voor de eigenaar):</strong> Vul [Jouw bedrijfsnaam], [KVK-nummer] en [Jouw zakelijk adres] in voordat je dit live zet. Dit is wettelijk verplicht.
-          </p>
-        </div>
       </div>
     </main>
   )
