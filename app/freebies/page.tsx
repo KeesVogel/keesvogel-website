@@ -40,6 +40,7 @@ export default function FreebiesPage() {
   const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [newsletterConsent, setNewsletterConsent] = useState(false)
 
   // Check localStorage for returning visitors
   useEffect(() => {
@@ -63,7 +64,7 @@ export default function FreebiesPage() {
       const res = await fetch('/api/freebies/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name }),
+        body: JSON.stringify({ email, name, newsletterConsent }),
       })
 
       if (!res.ok) {
@@ -219,6 +220,34 @@ export default function FreebiesPage() {
                           onBlur={e => (e.currentTarget.style.borderColor = '#e0ecf5')}
                         />
                       </div>
+
+                      {/* Newsletter opt-in checkbox — verplicht onder AVG */}
+                      <label className="flex items-start gap-3 cursor-pointer group">
+                        <div className="relative flex-shrink-0 mt-0.5">
+                          <input
+                            type="checkbox"
+                            checked={newsletterConsent}
+                            onChange={e => setNewsletterConsent(e.target.checked)}
+                            className="sr-only"
+                          />
+                          <div
+                            className="w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all"
+                            style={{
+                              borderColor: newsletterConsent ? '#00b4d8' : '#c8dcea',
+                              background: newsletterConsent ? '#00b4d8' : 'white',
+                            }}
+                          >
+                            {newsletterConsent && <span className="text-white text-xs font-bold">✓</span>}
+                          </div>
+                        </div>
+                        <span className="text-[#3d6080] font-dm text-xs leading-relaxed">
+                          Ja, ik ontvang graag de gratis wekelijkse AI tips van KeesVogel.ai per e-mail.
+                          Ik kan mij altijd uitschrijven via de afmeldlink in elke mail. Lees ons{' '}
+                          <Link href="/privacy" className="text-[#00b4d8] underline hover:text-[#0099bb]">
+                            privacybeleid
+                          </Link>.
+                        </span>
+                      </label>
 
                       {error && <p className="text-red-500 font-dm text-xs">{error}</p>}
 
