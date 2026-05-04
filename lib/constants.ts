@@ -136,40 +136,22 @@ export const CONTENT_CARDS = [
 
 export const FREEBIES = [
   {
-    icon: '🤖',
-    title: 'Claude Prompt Gids',
-    description: '50+ kant-en-klare prompts voor webshop-eigenaren. Direct inzetbaar voor marketing, klantenservice en content.',
-    href: 'https://www.plugandpay.nl',
-  },
-  {
-    icon: '📱',
-    title: 'Social Media Template Pack',
-    description: 'Bewezen templates voor Instagram, TikTok en LinkedIn. Maak in minuten professionele content.',
-    href: 'https://www.plugandpay.nl',
-  },
-  {
-    icon: '📈',
-    title: 'AI Groei Checklist',
-    description: 'Stap-voor-stap hoe je AI inzet in jouw webshop. Van tools tot workflows — alles wat je nodig hebt.',
-    href: 'https://www.plugandpay.nl',
-  },
-  {
-    icon: '✉️',
-    title: 'E-mail Flows Toolkit',
-    description: 'Kant-en-klare e-mailsequenties geoptimaliseerd voor conversie. Welkom, abandoned cart, winback en meer.',
-    href: 'https://www.plugandpay.nl',
-  },
-  {
-    icon: '🎯',
-    title: 'Ad Creative Gids',
-    description: 'Scroll-stoppende advertenties maken met AI in 15 minuten. Inclusief hooks, structuren en prompts.',
-    href: 'https://www.plugandpay.nl',
+    icon: '👥',
+    title: '8 Business-legendes Team',
+    description: 'Leer van 8 succesvolle ondernemers en hun AI-strategieën. Exclusieve Claude skills speciaal voor jouw business.',
+    href: 'https://keesvogel.plugandpay.com/gratis-claude-skill-8-business-legendes',
   },
   {
     icon: '📸',
-    title: 'Productfoto Prompt Pack',
-    description: '25 AI-prompts voor professionele productfotografie. Transformeer gewone foto\'s naar studio-kwaliteit.',
-    href: 'https://www.plugandpay.nl',
+    title: 'Bol.com Fotograaf Eva',
+    description: 'AI-tool die je productfoto\'s automatisch optimaleert voor Bol.com. Hogere zichtbaarheid, meer conversies.',
+    href: 'https://keesvogel.plugandpay.com/gratis-marketplace-fotograa-claude-skill',
+  },
+  {
+    icon: '💼',
+    title: 'LinkedIn Fotograaf',
+    description: 'Creëer professionele LinkedIn content met AI. Van profielfoto\'s tot post-templates — alles inbegrepen.',
+    href: 'https://keesvogel.plugandpay.com/gratis-linkedin-fotograa-claude-skill-copy',
   },
 ]
 
