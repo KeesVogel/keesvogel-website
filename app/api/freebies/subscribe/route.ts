@@ -19,38 +19,38 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Database fout' }, { status: 500 })
     }
 
-    // 2. Subscribe to Beehiiv newsletter
-    const beehiivRes = await fetch(
-      `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
-        },
-        body: JSON.stringify({
-          email,
-          first_name: name.split(' ')[0],
-          last_name: name.split(' ').slice(1).join(' ') || '',
-          reactivate_existing: false,
-          send_welcome_email: true,
-          utm_source: 'keesvogel.nl',
-          utm_medium: 'freebies',
-          utm_campaign: 'freebies-hub',
-        }),
+    // 2. Subscribe to newsletter (optional — only runs if API key is set)
+    if (process.env.BEEHIIV_API_KEY && process.env.BEEHIIV_PUBLICATION_ID) {
+      const beehiivRes = await fetch(
+        `https://api.beehiiv.com/v2/publications/${process.env.BEEHIIV_PUBLICATION_ID}/subscriptions`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
+          },
+          body: JSON.stringify({
+            email,
+            first_name: name.split(' ')[0],
+            last_name: name.split(' ').slice(1).join(' ') || '',
+            reactivate_existing: false,
+            send_welcome_email: true,
+            utm_source: 'keesvogel.nl',
+            utm_medium: 'freebies',
+            utm_campaign: 'freebies-hub',
+          }),
+        }
+      )
+
+      if (beehiivRes.ok) {
+        await supabase
+          .from('subscribers')
+          .update({ beehiiv_subscribed: true })
+          .eq('email', email)
+      } else {
+        console.error('Beehiiv error:', await beehiivRes.text())
       }
-    )
-
-    if (!beehiivRes.ok) {
-      console.error('Beehiiv error:', await beehiivRes.text())
-      // Don't fail the whole request — user still gets freebies
     }
-
-    // 3. Update Beehiiv status in DB
-    await supabase
-      .from('subscribers')
-      .update({ beehiiv_subscribed: true })
-      .eq('email', email)
 
     return NextResponse.json({ success: true })
   } catch (err) {
