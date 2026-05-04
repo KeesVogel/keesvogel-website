@@ -62,11 +62,6 @@ export type Service = { icon: string; title: string; description: string; href?:
 
 export const SERVICES: Service[] = [
   {
-    icon: '🎯',
-    title: 'AI Marketing',
-    description: 'Van content tot campagnes — AI die raak communiceert en converteert voor jouw webshop.',
-  },
-  {
     icon: '🤖',
     title: 'AI Webshop Klantenservice',
     description: 'Binnen 10 minuten gekoppeld aan je Shopify en mail — daarna 24/7 beschikbaar voor jouw klanten.',
@@ -84,11 +79,6 @@ export const SERVICES: Service[] = [
     title: 'Short Form Content',
     description: 'AI analyseert uw markt. Wij filmen één dag. U post een maand lang — en trekt organisch bezoekers naar uw webshop.',
     href: '/short-form',
-  },
-  {
-    icon: '⚡',
-    title: 'Automatisering',
-    description: 'Slimme workflows die repetitieve taken overnemen zodat jij meer tijd hebt.',
   },
   {
     icon: '🎓',
