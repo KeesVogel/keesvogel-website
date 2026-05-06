@@ -42,17 +42,28 @@ export default function FreebiesPage() {
   const [error, setError] = useState('')
   const [newsletterConsent, setNewsletterConsent] = useState(false)
 
-  // Check localStorage for returning visitors
+  // Check Supabase session first, then localStorage fallback
   useEffect(() => {
-    const saved = localStorage.getItem('kv_freebies_user')
-    if (saved) {
-      const user = JSON.parse(saved)
-      setEmail(user.email)
-      setName(user.name)
-      setStep('unlocked')
-    } else {
-      setStep('form')
-    }
+    import('@/lib/supabase/client').then(({ createClient }) => {
+      const supabase = createClient()
+      supabase.auth.getUser().then(({ data }) => {
+        if (data.user) {
+          setEmail(data.user.email || '')
+          setName(data.user.user_metadata?.name || '')
+          setStep('unlocked')
+        } else {
+          const saved = localStorage.getItem('kv_freebies_user')
+          if (saved) {
+            const u = JSON.parse(saved)
+            setEmail(u.email)
+            setName(u.name)
+            setStep('unlocked')
+          } else {
+            setStep('form')
+          }
+        }
+      })
+    })
   }, [])
 
   async function handleSubmit(e: React.FormEvent) {

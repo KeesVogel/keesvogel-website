@@ -15,6 +15,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: 'Diensten', href: '#diensten' },
   { label: 'Foto & Video', href: '#media' },
+  { label: 'Trainingen', href: '/trainingen' },
   { label: 'Freebies', href: '/freebies' },
   { label: 'Community', href: '#community' },
   { label: 'Contact', href: '#contact' },

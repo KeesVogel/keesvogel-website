@@ -3,11 +3,23 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { NAV_LINKS, SITE } from '@/lib/constants'
+import { createClient } from '@/lib/supabase/client'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [user, setUser] = useState<any>(null)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => setUser(data.user))
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+      setUser(session?.user ?? null)
+    })
+    return () => subscription.unsubscribe()
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -50,13 +62,18 @@ export default function Navbar() {
           </div>
 
           {/* CTA + hamburger */}
-          <div className="flex items-center gap-4">
-            <a
-              href={`mailto:${SITE.email}`}
-              className="hidden md:inline-flex items-center bg-[#00b4d8] text-white font-dm font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#0099bb] transition-colors duration-200"
-            >
-              Neem contact op
-            </a>
+          <div className="flex items-center gap-3">
+            {user ? (
+              <Link href="/account"
+                className="hidden md:inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-dm font-semibold text-sm px-4 py-2 rounded-full hover:bg-white/20 transition-colors duration-200">
+                👤 Mijn account
+              </Link>
+            ) : (
+              <Link href="/login"
+                className="hidden md:inline-flex items-center bg-[#00b4d8] text-white font-dm font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-[#0099bb] transition-colors duration-200">
+                Inloggen
+              </Link>
+            )}
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
