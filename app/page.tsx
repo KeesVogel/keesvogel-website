@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { EmailIcon, PhoneIcon, SocialIconBadge } from '@/components/ui/SocialIcons'
+import { EmailIcon, SocialIconBadge } from '@/components/ui/SocialIcons'
 import { LINKS, SITE } from '@/lib/constants'
 
 const SOCIALS = [
@@ -61,11 +61,6 @@ export default function Home() {
           <a href={`mailto:${SITE.email}`} className="link-row link-row-compact">
             <EmailIcon size={18} />
             <span className="link-row-title">{SITE.email}</span>
-          </a>
-
-          <a href={`tel:${SITE.phoneTel}`} className="link-row link-row-compact">
-            <PhoneIcon size={18} />
-            <span className="link-row-title">{SITE.phone}</span>
           </a>
         </div>
 
